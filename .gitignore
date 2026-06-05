@@ -1,17 +1,32 @@
+# Environment
+.env
+venv/
+.venv/
+
 # Python
 __pycache__/
-*.py[cod]
-.venv/
-venv/
+*.pyc
+*.pyo
 
-# Databases & Data
-*.db
-*.sqlite
-/data/
-mlflow/
-mlflow_fresh_db/
+# Jupyter
+.ipynb_checkpoints/
 
-# MacOS/Windows
+# Data files
+*.csv
+*.parquet
+
+# Kafka
+data/kafka_data/
+
+# MinIO
+data/minio_data/
+
+# MLflow
+data/mlflow/
+
+# Logs
+*.log
+
+# OS files
 .DS_Store
 Thumbs.db
-EOT
