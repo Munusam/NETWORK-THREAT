@@ -1,6 +1,17 @@
-.env
+# Python
 __pycache__/
-*.csv
-*.parquet
-.ipynb_checkpoints/
+*.py[cod]
+.venv/
 venv/
+
+# Databases & Data
+*.db
+*.sqlite
+/data/
+mlflow/
+mlflow_fresh_db/
+
+# MacOS/Windows
+.DS_Store
+Thumbs.db
+EOT
