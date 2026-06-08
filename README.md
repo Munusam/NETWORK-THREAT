@@ -48,6 +48,8 @@ graph TD
     G -->|Metrics| H[Prometheus]
     H -->|Visualizes| I[Grafana Dashboard]
     J[Airflow] -.->|Orchestrates| D
+---
+
 
 ## ⚙️ Prerequisites
 
