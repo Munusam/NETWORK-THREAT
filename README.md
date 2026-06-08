@@ -35,7 +35,11 @@ This project implements a complete Big Data lifecycle divided into 8 distinct la
 
 <br/>
 
-### 🔄 Data Flow
+
+
+```markdown
+
+## 🔄 Data Flow
 
 ```mermaid
 graph TD
@@ -48,8 +52,10 @@ graph TD
     G -->|Metrics| H[Prometheus]
     H -->|Visualizes| I[Grafana Dashboard]
     J[Airflow] -.->|Orchestrates| D
----
 
+```
+
+---
 
 ## ⚙️ Prerequisites
 
@@ -80,7 +86,7 @@ docker-compose up -d
 
 ```
 
-*(Wait ~60 seconds for all services, especially Airflow and BentoML, to fully initialize).*
+> ⏳ **Note:** Wait ~60 seconds for all services, especially Airflow and BentoML, to fully initialize.
 
 ---
 
@@ -99,22 +105,22 @@ python generator.py
 
 ### Step 2: Stream to the Data Lake (Layers 2 & 3)
 
-1. Navigate to **JupyterLab**: [http://localhost:8888](https://www.google.com/search?q=http://localhost:8888)
+1. Navigate to **JupyterLab**: http://localhost:8888
 2. Open the `01_data_ingestion.ipynb` notebook.
-3. Run the cells to start Spark Structured Streaming. This will consume the Kafka stream and write Parquet files into the MinIO Lakehouse ([http://localhost:9001](https://www.google.com/search?q=http://localhost:9001)).
+3. Run the cells to start Spark Structured Streaming. This will consume the Kafka stream and write Parquet files into the MinIO Lakehouse (http://localhost:9001).
 
 ### Step 3: Train & Track the Model (Layers 5 & 6)
 
 1. Open the `02_model_training.ipynb` notebook in JupyterLab.
 2. Run the cells to train the Random Forest model on the stored Delta Lake data.
-3. Navigate to the **MLflow UI** at [http://localhost:5050](https://www.google.com/search?q=http://localhost:5050) to view your F1 Scores, run metrics, and registered models.
+3. Navigate to the **MLflow UI** at http://localhost:5050 to view your F1 Scores, run metrics, and registered models.
 4. *Optional:* Copy the `Run ID` of your best model to update the BentoML container if deploying a new version.
 
 ### Step 4: Serve the Model (Layer 7)
 
 The BentoML API is automatically running and waiting for HTTP POST requests.
 
-1. Navigate to the **Swagger UI**: [http://localhost:3030](https://www.google.com/search?q=http://localhost:3030)
+1. Navigate to the **Swagger UI**: http://localhost:3030
 2. Open the `POST /predict` endpoint, click **Try it out**, and send a test JSON payload:
 
 ```json
@@ -130,7 +136,7 @@ The BentoML API is automatically running and waiting for HTTP POST requests.
 
 ### Step 5: Monitor the API (Layer 8)
 
-1. Navigate to **Grafana**: [http://localhost:3050](https://www.google.com/search?q=http://localhost:3050)
+1. Navigate to **Grafana**: http://localhost:3050
 2. Login with `admin` / `admin`.
 3. View the custom dashboard tracking:
 * **Total API Requests**: `sum(bentoml_service_request_duration_seconds_count)`
@@ -141,7 +147,7 @@ The BentoML API is automatically running and waiting for HTTP POST requests.
 
 ### Step 6: Orchestrate Background Jobs (Layer 4)
 
-1. Navigate to **Apache Airflow**: [http://localhost:8080](https://www.google.com/search?q=http://localhost:8080) *(Login: `admin` / `admin`)*.
+1. Navigate to **Apache Airflow**: http://localhost:8080 *(Login: `admin` / `admin`)*.
 2. Unpause and manually trigger the `network_threat_orchestration` DAG.
 3. Watch the automated tasks simulate Model Drift Monitoring and Cold Data Archiving.
 
@@ -151,13 +157,13 @@ The BentoML API is automatically running and waiting for HTTP POST requests.
 
 | Service | UI Endpoint | Default Credentials |
 | --- | --- | --- |
-| **JupyterLab** | [http://localhost:8888](https://www.google.com/search?q=http://localhost:8888) | *(None / Token in logs)* |
-| **MinIO Console** | [http://localhost:9001](https://www.google.com/search?q=http://localhost:9001) | `admin` / `password` |
-| **MLflow** | [http://localhost:5050](https://www.google.com/search?q=http://localhost:5050) | *(None)* |
-| **BentoML Swagger API** | [http://localhost:3030](https://www.google.com/search?q=http://localhost:3030) | *(None)* |
-| **Apache Airflow** | [http://localhost:8080](https://www.google.com/search?q=http://localhost:8080) | `admin` / `admin` |
-| **Grafana** | [http://localhost:3050](https://www.google.com/search?q=http://localhost:3050) | `admin` / `admin` |
-| **Prometheus** | [http://localhost:9090](https://www.google.com/search?q=http://localhost:9090) | *(None)* |
+| **JupyterLab** | http://localhost:8888 | *(None / Token in logs)* |
+| **MinIO Console** | http://localhost:9001 | `admin` / `password` |
+| **MLflow** | http://localhost:5050 | *(None)* |
+| **BentoML Swagger API** | http://localhost:3030 | *(None)* |
+| **Apache Airflow** | http://localhost:8080 | `admin` / `admin` |
+| **Grafana** | http://localhost:3050 | `admin` / `admin` |
+| **Prometheus** | http://localhost:9090 | *(None)* |
 
 ---
 
@@ -167,5 +173,11 @@ To stop the cluster and remove the containers, networks, and volumes *(⚠️ No
 
 ```bash
 docker-compose down -v
+
+```
+
+```
+
+```
 
 ```
