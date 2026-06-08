@@ -1,8 +1,3 @@
-Here is the complete, fully polished, and professional `README.md` file from top to bottom. It includes the beautiful layout, badges, architecture diagram, and all execution steps.
-
-Click the **"Copy"** button on the code block below to copy everything at once:
-
-```markdown
 <div align="center">
 
 # 🛡️ Real-Time Network Threat Detection Architecture
@@ -18,6 +13,8 @@ Click the **"Copy"** button on the code block below to copy everything at once:
 **An end-to-end, 8-layer Big Data and Machine Learning pipeline designed to ingest, process, and classify malicious network traffic in real-time.**
 
 </div>
+
+<br/>
 
 > **💡 Engineering Highlight:** This entire microservices architecture was heavily optimized to run locally within a strict **5GB RAM constraint**, demonstrating advanced container resource management and lightweight orchestration techniques.
 
@@ -36,6 +33,8 @@ This project implements a complete Big Data lifecycle divided into 8 distinct la
 7. **Serving:** Containerized REST API model deployment using **BentoML**.
 8. **Monitoring:** Real-time system and inference tracking using **Prometheus** & **Grafana**.
 
+<br/>
+
 ### 🔄 Data Flow
 
 ```mermaid
@@ -49,10 +48,6 @@ graph TD
     G -->|Metrics| H[Prometheus]
     H -->|Visualizes| I[Grafana Dashboard]
     J[Airflow] -.->|Orchestrates| D
-
-```
-
----
 
 ## ⚙️ Prerequisites
 
